@@ -1,0 +1,15 @@
+stages:
+  - deploy
+
+deploy_job:
+  stage: deploy
+  image: alpine:latest  # You can use any image with FTP client installed
+  script:
+    - apk add --no-cache lftp  # Install LFTP FTP client
+
+    - lftp -c "open -u if0_36364276,MXctNvPyNWc9e ftpupload.net; mirror -R $CI_PROJECT_DIR /htdocs"
+
+  environment:
+    name: production  # You can define different environments like staging, production, etc.
+  only:
+    - main  # Deploy only from the master branch

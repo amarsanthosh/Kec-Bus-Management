@@ -1,0 +1,6 @@
+.botton {
+    background-color: white;
+    border-color: #8c77bf;
+    --bs-btn-color: #8a5fb3e3;
+    --bs-btn-hover-color: #6e00ab;
+}
